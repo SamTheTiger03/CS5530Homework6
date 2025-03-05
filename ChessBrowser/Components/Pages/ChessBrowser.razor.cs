@@ -42,13 +42,9 @@ namespace ChessBrowser.Components.Pages
 
             // TODO:
             //   Parse the provided PGN data
-            //   We recommend creating separate libraries to represent chess data and load the file
+            //   We recommend creating separate libraries to represent chess data and load the file            
             PgnParser parser = new();
             List<ChessData> chessData = parser.Parse(PGNFileLines);
-            foreach(ChessData d in chessData)
-            {
-                Console.WriteLine(d.ToString());
-            }
 
 
       using (MySqlConnection conn = new MySqlConnection(connection))

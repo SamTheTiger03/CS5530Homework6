@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\owner\\source\\repos\\cs5530homework6\\chessbrowser\\components\\pgnparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\pgnparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\owner\\source\\repos\\cs5530homework6\\chessbrowser\\components\\chessplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\chessplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\owner\\source\\repos\\cs5530homework6\\chessbrowser\\components\\chessdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\chessdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\owner\\source\\repos\\cs5530homework6\\chessbrowser\\components\\pages\\chessbrowser.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\pages\\chessbrowser.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\owner\\source\\repos\\cs5530homework6\\chessbrowser\\components\\chessgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\chessgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|c:\\users\\owner\\source\\repos\\cs5530homework6\\chessbrowser\\components\\chessevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84976219-6D67-4DB9-A9B5-E52957FE1E44}|ChessBrowser\\ChessBrowser.csproj|solutionrelative:chessbrowser\\components\\chessevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChessBrowser.razor.cs",
+              "DocumentMoniker": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
+              "ToolTip": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
+              "RelativeToolTip": "ChessBrowser\\Components\\Pages\\ChessBrowser.razor.cs",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAowKcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:01:14.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PgnParser.cs",
+              "DocumentMoniker": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\PgnParser.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\PgnParser.cs",
+              "ToolTip": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\PgnParser.cs*",
+              "RelativeToolTip": "ChessBrowser\\Components\\PgnParser.cs*",
+              "ViewState": "AgIAADsAAAAAAAAAAAAowEMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:00:21.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChessPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessPlayer.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\ChessPlayer.cs",
+              "ToolTip": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessPlayer.cs",
+              "RelativeToolTip": "ChessBrowser\\Components\\ChessPlayer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:00:19.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChessGame.cs",
+              "DocumentMoniker": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessGame.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\ChessGame.cs",
+              "ToolTip": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessGame.cs",
+              "RelativeToolTip": "ChessBrowser\\Components\\ChessGame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:00:18.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ChessEvent.cs",
+              "DocumentMoniker": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessEvent.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\ChessEvent.cs",
+              "ToolTip": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessEvent.cs",
+              "RelativeToolTip": "ChessBrowser\\Components\\ChessEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:00:16.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChessData.cs",
+              "DocumentMoniker": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessData.cs",
+              "RelativeDocumentMoniker": "ChessBrowser\\Components\\ChessData.cs",
+              "ToolTip": "C:\\Users\\Owner\\source\\repos\\CS5530Homework6\\ChessBrowser\\Components\\ChessData.cs*",
+              "RelativeToolTip": "ChessBrowser\\Components\\ChessData.cs*",
+              "ViewState": "AgIAABoAAAAAAAAAAAAUwDEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:00:04.583Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

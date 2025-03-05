@@ -45,7 +45,7 @@
         public override string ToString()
         {
             return "Event: " + Event + "\nSite: " + Site + "\nRound: " + Round + "\nwPlayer: " + WhitePlayer +
-                "\nbPlayer: " + BlackPlayer + "\nwElo: " + WhiteElo + "\nbElo: " + "\nResult: " + Result + 
+                "\nbPlayer: " + BlackPlayer + "\nwElo: " + WhiteElo + "\nbElo: " + BlackElo + "\nResult: " + Result + 
                 "\neDate: " + EventDate + "\nMoves: " + Moves;
         }
     }

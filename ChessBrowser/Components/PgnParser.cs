@@ -1,4 +1,6 @@
-﻿namespace ChessBrowser.Components
+﻿using System.Diagnostics;
+
+namespace ChessBrowser.Components
 {
     // Parses a pgn file to upload to the Chess database.
     public class PgnParser
@@ -24,43 +26,51 @@
             {
                 if (!readingMoves)
                 {
-                    switch (line)
+                    if (line.StartsWith("[Event "))
+                        Event = line.Substring(8, line.Length - 10);
+                    else if (line.StartsWith("[Site "))
+                        Site = line.Substring(7, line.Length - 9);
+                    else if (line.StartsWith("[Round "))
+                        Round = line.Substring(8, line.Length - 10);
+                    else if (line.StartsWith("[White "))
+                        WhitePlayer = line.Substring(8, line.Length - 10);
+                    else if (line.StartsWith("[Black "))
+                        BlackPlayer = line.Substring(8, line.Length - 10);
+                    else if (line.StartsWith("[Result "))
                     {
-                        case (line.StartsWith("[Event ")):
-                            Event = line.Substring(8, line.Length - 2); break;
-                        case (line.StartsWith("[Site ")):
-                            Site = line.Substring(7, line.Length - 2); break;
-                        case (line.StartsWith("[Round ")):
-                            Round = line.Substring(8, line.Length - 2); break;
-                        case (line.StartsWith("[White ")):
-                            WhitePlayer = line.Substring(8, line.Length - 2); break;
-                        case (line.StartsWith("[Black ")):
-                            BlackPlayer = line.Substring(8, line.Length - 2); break;
-                        case (line.StartsWith("[Result ")):
-                            Result = line.Substring(9, line.Length - 2); break;
-                        case (line.StartsWith("[WhiteElo ")):
-                            WhiteElo = int.Parse(line.Substring(11, line.Length - 2)); break;
-                        case (line.StartsWith("[BlackElo ")):
-                            BlackElo = int.Parse(line.Substring(11, line.Length - 2)); break;
-                        case (line.StartsWith("[EventDate ")):
-                            EventDate = line.Substring(12, line.Length - 2); break;
-                        case (line.StartsWith("[")):
-                            // Ignore other tags
-                            break;
-                        case (line.StartsWith("1.")):
-                            Moves = line;
-                            readingMoves = true; break;
-                        default: break;
+                        string resultVal = line.Substring(9, line.Length - 11);
+                        if (resultVal == "1/2-1/2")
+                            Result = 'D';
+                        else if (resultVal == "1-0")
+                            Result = 'W';
+                        else if (resultVal == "0-1")
+                            Result = 'B';
+                    }
+                        
+                    else if (line.StartsWith("[WhiteElo "))
+                        WhiteElo = int.Parse(line.Substring(11, line.Length - 13));
+                    else if (line.StartsWith("[BlackElo "))
+                        BlackElo = int.Parse(line.Substring(11, line.Length - 13));
+                    else if (line.StartsWith("[EventDate "))
+                        EventDate = line.Substring(12, line.Length - 14);
+                    else if (line.StartsWith("["))
+                        // Ignore other tags
+                        continue;
+                    else if (line.StartsWith("1."))
+                    {
+                        Moves = line;
+                        readingMoves = true;
                     }
                 }
                 else
                 {
-                    if (line.StartsWith(""))
+                    if (line.Length == 0)
                     {
                         readingMoves = false;
                         // Create data object and add to list
-                        data.Add(new ChessData(Event, Site, Round, WhitePlayer, BlackPlayer, WhiteElo, BlackElo,
-                            Result, EventDate, Moves));
+                        ChessData temp = new ChessData(Event, Site, Round, WhitePlayer, BlackPlayer, WhiteElo, BlackElo,
+                            Result, EventDate, Moves);
+                        data.Add(temp);
                     }
                     else
                         Moves += line;
