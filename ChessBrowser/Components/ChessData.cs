@@ -1,17 +1,10 @@
-﻿namespace ChessBrowser.Components
+﻿using System.Security.Policy;
+
+namespace ChessBrowser.Components
 {
     public class ChessData
     {
-        private string Event { get; }
-        private string Site { get; }
-        private string Round { get; }
-        private string WhitePlayer { get; }
-        private string BlackPlayer { get; }
-        private int WhiteElo { get; }
-        private int BlackElo { get; }
-        private char Result { get; }
-        private string EventDate { get; }
-        private string Moves { get; }
+        public ChessGame game { get; private set; }
 
         /// <summary>
         /// Creates a ChessData object. Created by the PgnParser and used by the ChessBrowser to create
@@ -30,23 +23,17 @@
         public ChessData(string ev, string site, string round, string wp, string bp, int wElo, int bElo,
             char result, string evDate, string moves)
         {
-            this.Event = ev;
-            this.Site = site;
-            this.Round = round;
-            this.WhitePlayer = wp;
-            this.BlackPlayer = bp;
-            this.WhiteElo = wElo;
-            this.BlackElo = bElo;
-            this.Result = result;
-            this.EventDate = evDate;
-            this.Moves = moves;
+            ChessPlayer wPlayer = new ChessPlayer(wp, wElo);
+            ChessPlayer bPlayer = new ChessPlayer(bp, bElo);
+            ChessEvent gEvent = new ChessEvent(ev, site, evDate);
+            game = new ChessGame(gEvent, round, wPlayer, bPlayer, result, moves);
         }
 
-        public override string ToString()
+        /*public override string ToString()
         {
             return "Event: " + Event + "\nSite: " + Site + "\nRound: " + Round + "\nwPlayer: " + WhitePlayer +
                 "\nbPlayer: " + BlackPlayer + "\nwElo: " + WhiteElo + "\nbElo: " + BlackElo + "\nResult: " + Result + 
                 "\neDate: " + EventDate + "\nMoves: " + Moves;
-        }
+        }*/
     }
 }

@@ -3,8 +3,8 @@
     // A chess player in the database, their name and Elo.
     public class ChessPlayer
     {
-        private string Name { get; }
-        private int Elo { get; set; }
+        public string Name { get; private set; }
+        public int Elo { get; private set; }
 
         /// <summary>
         /// Creates a ChessPlayer object.

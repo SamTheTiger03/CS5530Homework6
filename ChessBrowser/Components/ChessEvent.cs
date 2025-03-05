@@ -3,9 +3,9 @@
     // Represents a Chess event to add to the database, its name, site, and date.
     public class ChessEvent
     {
-        private string Name { get; }
-        private string Site { get; }
-        private string EventDate { get; }
+        public string Name { get; private set; }
+        public string Site { get; private set; }
+        public string EventDate { get; private set; }
 
         /// <summary>
         /// Creates a ChessEvent object.

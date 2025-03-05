@@ -4,12 +4,12 @@
     // the list of moves in the game.
     public class ChessGame
     {
-        private ChessEvent Event { get; }
-        private ChessPlayer WhitePlayer { get; }
-        private ChessPlayer BlackPlayer { get; }
-        private char Result { get; set; }
-        private string Moves { get; set; }
-        private string Round {  get; set; }
+        public ChessEvent Event { get; private set; }
+        public ChessPlayer WhitePlayer { get; private set; }
+        public ChessPlayer BlackPlayer { get; private set; }
+        public char Result { get; private set; }
+        public string Moves { get; private set; }
+        public string Round {  get; private set; }
 
         /// <summary>
         /// Creates a ChessGame object.
