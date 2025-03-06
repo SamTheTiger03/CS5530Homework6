@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using System.Diagnostics;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using static Mysqlx.Expect.Open.Types.Condition.Types;
+using System.Xml.Linq;
 
 namespace ChessBrowser.Components.Pages
 {
@@ -57,40 +60,31 @@ namespace ChessBrowser.Components.Pages
                     int length = chessData.Count;
                     foreach (ChessData cD in chessData)
                     {
-                        MySqlCommand wPlayerCommand = conn.CreateCommand();
-                        wPlayerCommand.CommandText = "insert into Players (Name, Elo) values (@pName, @elo) on duplicate key update Elo = if(@elo > Elo, @elo, Elo)";
-                        MySqlCommand bPlayerCommand = conn.CreateCommand();
-                        bPlayerCommand.CommandText = "insert into Players (Name, Elo) values (@pName, @elo) on duplicate key update Elo = if(@elo > Elo, @elo, Elo)";
-                        MySqlCommand eventCommand = conn.CreateCommand();
-                        eventCommand.CommandText = "insert ignore into Events (Name, Site, Date) values (@eName, @site, @date)";
-                        MySqlCommand gameCommand = conn.CreateCommand();
-                        gameCommand.CommandText = "insert ignore into Games values (@round, @result, @moves," +
-                                                    "(select pID from Players where Name = @bName)," +
-                                                    "(select pID from Players where Name = @wName)," +
-                                                    "(select eID from Events where Name = @eName and Site = @site and Date = @date))";
+                        MySqlCommand singleCommand = conn.CreateCommand();
+                        singleCommand.CommandText = ("insert into Players(Name, Elo) values(@wPName, @wElo) on duplicate key update Elo = if (@wElo > Elo, @wElo, Elo);" +
+                            "insert into Players (Name, Elo) values (@bPName, @bElo) on duplicate key update Elo = if(@bElo > Elo, @bElo, Elo);" +
+                            "insert ignore into Events (Name, Site, Date) values (@eName, @site, @date);" +
+                            "insert ignore into Games values (@round, @result, @moves," +
+                            "(select pID from Players where Name = @bPName)," +
+                            "(select pID from Players where Name = @wPName)," +
+                            "(select eID from Events where Name = @eName and Site = @site and Date = @date))");
+
                         //Adds white player
-                        wPlayerCommand.Parameters.AddWithValue("@pName", cD.game.WhitePlayer.Name);
-                        wPlayerCommand.Parameters.AddWithValue("@elo", cD.game.WhitePlayer.Elo);
-                        wPlayerCommand.ExecuteNonQuery();
+                        singleCommand.Parameters.AddWithValue("@wPName", cD.game.WhitePlayer.Name);
+                        singleCommand.Parameters.AddWithValue("@wElo", cD.game.WhitePlayer.Elo);
                         //Adds black player
-                        bPlayerCommand.Parameters.AddWithValue("@pName", cD.game.BlackPlayer.Name);
-                        bPlayerCommand.Parameters.AddWithValue("@elo", cD.game.BlackPlayer.Elo);
-                        bPlayerCommand.ExecuteNonQuery();
+                        singleCommand.Parameters.AddWithValue("@bPName", cD.game.BlackPlayer.Name);
+                        singleCommand.Parameters.AddWithValue("@bElo", cD.game.BlackPlayer.Elo);
                         //Adds event
-                        eventCommand.Parameters.AddWithValue("@eName", cD.game.Event.Name);
-                        eventCommand.Parameters.AddWithValue("@site", cD.game.Event.Site);
-                        eventCommand.Parameters.AddWithValue("@date", cD.game.Event.EventDate);
-                        eventCommand.ExecuteNonQuery();
+                        singleCommand.Parameters.AddWithValue("@eName", cD.game.Event.Name);
+                        singleCommand.Parameters.AddWithValue("@site", cD.game.Event.Site);
+                        singleCommand.Parameters.AddWithValue("@date", cD.game.Event.EventDate);
                         //Adds game
-                        gameCommand.Parameters.AddWithValue("@round", cD.game.Round);
-                        gameCommand.Parameters.AddWithValue("@result", cD.game.Result);
-                        gameCommand.Parameters.AddWithValue("@moves", cD.game.Moves);
-                        gameCommand.Parameters.AddWithValue("@bName", cD.game.BlackPlayer.Name);
-                        gameCommand.Parameters.AddWithValue("@wName", cD.game.WhitePlayer.Name);
-                        gameCommand.Parameters.AddWithValue("@eName", cD.game.Event.Name);
-                        gameCommand.Parameters.AddWithValue("@site", cD.game.Event.Site);
-                        gameCommand.Parameters.AddWithValue("@date", cD.game.Event.EventDate);
-                        gameCommand.ExecuteNonQuery();
+                        singleCommand.Parameters.AddWithValue("@round", cD.game.Round);
+                        singleCommand.Parameters.AddWithValue("@result", cD.game.Result);
+                        singleCommand.Parameters.AddWithValue("@moves", cD.game.Moves);
+                        //Perform inserts
+                        singleCommand.ExecuteNonQuery();
                         // Progress bar updates.
                         counter++;
                         Progress = (int)((counter * 100) / length);
