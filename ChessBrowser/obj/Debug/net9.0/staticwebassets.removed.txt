@@ -1,0 +1,3 @@
+C:\Users\Owner\Source\Repos\CS5530Homework6\ChessBrowser\wwwroot\bootstrap\bootstrap.min.css.map
+C:\Users\Owner\Source\Repos\CS5530Homework6\ChessBrowser\wwwroot\app.css
+C:\Users\Owner\Source\Repos\CS5530Homework6\ChessBrowser\wwwroot\bootstrap\bootstrap.min.css

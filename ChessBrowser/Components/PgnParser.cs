@@ -19,6 +19,12 @@ namespace ChessBrowser.Components
 
         public PgnParser() { }
 
+        /// <summary>
+        /// Given an input PGN file, this method parses the information and creates ChessData
+        /// objects, which hold all information for one set of game data.
+        /// </summary>
+        /// <param name="PGNFileLines">An array of strings holding the file contents</param>
+        /// <returns></returns>
         public List<ChessData> Parse(string[] PGNFileLines)
         {
             List<ChessData> data = new();
