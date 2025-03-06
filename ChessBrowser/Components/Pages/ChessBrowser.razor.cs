@@ -40,13 +40,11 @@ namespace ChessBrowser.Components.Pages
             // assuimg you've filled in the credentials in the GUI
             string connection = GetConnectionString();
 
-            // TODO:
-            //   Parse the provided PGN data
-            //   We recommend creating separate libraries to represent chess data and load the file            
+            // Parse the data from the input file.          
             PgnParser parser = new();
             List<ChessData> chessData = parser.Parse(PGNFileLines);
 
-
+            // Add to the database using the connection
             using (MySqlConnection conn = new MySqlConnection(connection))
             {
                 try
@@ -54,9 +52,7 @@ namespace ChessBrowser.Components.Pages
                     // Open a connection
                     conn.Open();
 
-                    // TODO:
-                    //   Iterate through your data and generate appropriate insert commands
-
+                    // Iterates through the input data and generates insert commands
                     int counter = 0;
                     int length = chessData.Count;
                     foreach (ChessData cD in chessData)
@@ -95,27 +91,18 @@ namespace ChessBrowser.Components.Pages
                         gameCommand.Parameters.AddWithValue("@site", cD.game.Event.Site);
                         gameCommand.Parameters.AddWithValue("@date", cD.game.Event.EventDate);
                         gameCommand.ExecuteNonQuery();
-                        // TODO:
-                        //   Update the Progress member variable every time progress has been made
-                        //   (e.g. one iteration of your upload loop)
-                        //   This will update the progress bar in the GUI
-                        //   Its value should be an integer representing a percentage of completion
+                        // Progress bar updates.
                         counter++;
                         Progress = (int)((counter * 100) / length);
                         // This tells the GUI to redraw after you update Progress (this should go inside your loop)
                         await InvokeAsync(StateHasChanged);
                     }
-
-
-
-
                 }
                 catch (Exception e)
                 {
                     System.Diagnostics.Debug.WriteLine(e.Message);
                 }
             }
-
         }
 
 
@@ -153,10 +140,7 @@ namespace ChessBrowser.Components.Pages
                     // Open a connection
                     conn.Open();
 
-                    // TODO:
-                    //   Generate and execute an SQL command,
-                    //   then parse the results into an appropriate string and return it.
-                    //This gives date, site, eventName
+                    // Generates the SQL command for the desired filter inputs on the database.
                     MySqlCommand selectCommand = conn.CreateCommand();
                     selectCommand.CommandText = "select e.Name as Event, e.Site, e.Date, wp.Name as White, wp.Elo as wElo, bp.Name as Black, bp.Elo as bElo, g.Result, g.Moves " +
                             "from Events e natural join Games g join Players wp right join Players bp " +
@@ -178,6 +162,7 @@ namespace ChessBrowser.Components.Pages
                     }
                     else
                     {
+                        // Default start and end date
                         selectCommand.Parameters.AddWithValue("@start", "0000-00-00");
                         selectCommand.Parameters.AddWithValue("@end", DateTime.Today);
                     }

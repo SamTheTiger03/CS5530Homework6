@@ -2,6 +2,7 @@
 
 namespace ChessBrowser.Components
 {
+    // Conatains the read Chess data from the input file.
     public class ChessData
     {
         public ChessGame game { get; private set; }
@@ -28,12 +29,5 @@ namespace ChessBrowser.Components
             ChessEvent gEvent = new ChessEvent(ev, site, evDate);
             game = new ChessGame(gEvent, round, wPlayer, bPlayer, result, moves);
         }
-
-        /*public override string ToString()
-        {
-            return "Event: " + Event + "\nSite: " + Site + "\nRound: " + Round + "\nwPlayer: " + WhitePlayer +
-                "\nbPlayer: " + BlackPlayer + "\nwElo: " + WhiteElo + "\nbElo: " + BlackElo + "\nResult: " + Result + 
-                "\neDate: " + EventDate + "\nMoves: " + Moves;
-        }*/
     }
 }

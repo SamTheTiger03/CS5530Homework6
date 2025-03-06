@@ -19,6 +19,11 @@ namespace ChessBrowser.Components
 
         public PgnParser() { }
 
+        /// <summary>
+        /// Parses an input PGN file from an array of strings. Returns the data as a list of ChessData.
+        /// </summary>
+        /// <param name="PGNFileLines">A list of ChessData objets parsed from the input file.</param>
+        /// <returns></returns>
         public List<ChessData> Parse(string[] PGNFileLines)
         {
             List<ChessData> data = new();
