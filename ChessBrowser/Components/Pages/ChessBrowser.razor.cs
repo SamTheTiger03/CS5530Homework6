@@ -56,7 +56,7 @@ namespace ChessBrowser.Components.Pages
 
                     // TODO:
                     //   Iterate through your data and generate appropriate insert commands
-                    
+
                     int counter = 0;
                     int length = chessData.Count;
                     foreach (ChessData cD in chessData)
@@ -100,8 +100,8 @@ namespace ChessBrowser.Components.Pages
                         //   (e.g. one iteration of your upload loop)
                         //   This will update the progress bar in the GUI
                         //   Its value should be an integer representing a percentage of completion
-                        counter++;                     
-                        Progress = (int)((counter * 100)/length);
+                        counter++;
+                        Progress = (int)((counter * 100) / length);
                         // This tells the GUI to redraw after you update Progress (this should go inside your loop)
                         await InvokeAsync(StateHasChanged);
                     }
@@ -156,6 +156,50 @@ namespace ChessBrowser.Components.Pages
                     // TODO:
                     //   Generate and execute an SQL command,
                     //   then parse the results into an appropriate string and return it.
+                    //This gives date, site, eventName
+                    MySqlCommand selectCommand = conn.CreateCommand();
+                    selectCommand.CommandText = "select e.Name as Event, e.Site, e.Date, wp.Name as White, wp.Elo as wElo, bp.Name as Black, bp.Elo as bElo, g.Result, g.Moves " +
+                            "from Events e natural join Games g join Players wp right join Players bp " +
+                            "on bp.pID = g.BlackPlayer where wp.pID = g.WhitePlayer " +
+                            "and wp.Name like @wName " +
+                            "and bp.name like @bName " +
+                            "and g.Moves like @opening " +
+                            "and g.Result like @winner " +
+                            "and e.Date >= @start " +
+                            "and e.Date <= @end";
+                    selectCommand.Parameters.AddWithValue("@wName", white + "%");
+                    selectCommand.Parameters.AddWithValue("@bName", black + "%");
+                    selectCommand.Parameters.AddWithValue("@opening", opening + "%");
+                    selectCommand.Parameters.AddWithValue("@winner", winner + "%");
+                    if (useDate)
+                    {
+                        selectCommand.Parameters.AddWithValue("@start", start);
+                        selectCommand.Parameters.AddWithValue("@end", end);
+                    }
+                    else
+                    {
+                        selectCommand.Parameters.AddWithValue("@start", "0000-00-00");
+                        selectCommand.Parameters.AddWithValue("@end", DateTime.Today);
+                    }
+
+                    using (MySqlDataReader eventReader = selectCommand.ExecuteReader())
+                    {
+                        while (eventReader.Read())
+                        {
+                            numRows += 1;
+                            parsedResult += "\nEvent: " + eventReader["Event"]
+                                        + "\nSite: " + eventReader["Site"]
+                                        + "\nDate: " + eventReader["Date"]
+                                        + "\nWhite: " + eventReader["White"] + " (" + eventReader["wElo"] + ")"
+                                        + "\nBlack: " + eventReader["Black"] + " (" + eventReader["bElo"] + ")"
+                                        + "\nResult: " + eventReader["Result"] + "\n";
+                            if (showMoves)
+                            {
+                                parsedResult += eventReader["Moves"] + "\n";
+                            }
+                        }
+                    }
+
                 }
                 catch (Exception e)
                 {
